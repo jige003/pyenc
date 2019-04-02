@@ -58,14 +58,13 @@ def clean():
         cfile = x.replace(".py", ".c")
         pycfile = x.replace(".py", ".pyc")
         print Fore.GREEN + "[+] remove c file:%s py file:%s pyc file:%s " % (cfile, x, pycfile)    
-        if os.path.exists(cfile):
-            os.remove(cfile)
-        if os.path.exists(x):
-            os.remove(x)
-        if os.path.exists(pycfile):
-            os.remove(pycfile)
+        os.path.exists(cfile) and os.remove(cfile)
+        os.path.exists(x) and os.remove(x)
+        os.path.exists(pycfile) and os.remove(pycfile)
     print Fore.GREEN + "[+] remove build_tmp_dir:%s" % build_tmp_dir
-    if os.path.exists(build_tmp_dir): shutil.rmtree(build_tmp_dir)
+    os.path.exists(build_tmp_dir) and shutil.rmtree(build_tmp_dir)
+    print Fore.GREEN + "[+] remove build_dir:%s" % build_dir
+    os.path.exists(build_dir) and shutil.rmtree(build_dir)
 
 def copy():
     for x in module_list:
