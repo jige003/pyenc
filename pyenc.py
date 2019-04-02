@@ -70,7 +70,7 @@ def clean():
 def copy():
     for x in module_list:
         xx = x.split(os.path.sep)[1:]
-        soname = os.path.join(build_dir, os.path.sep.join(xx))
+        soname = len(xx) and os.path.join(build_dir, os.path.sep.join(xx)) or os.path.join(build_dir, x)
         soname = soname.replace(".py", ".so")
         ffname = x.replace(".py", ".so")
         print Fore.GREEN + "[+] copy file: [ %s => %s ]" % (soname, ffname)
